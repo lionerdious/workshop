@@ -53,7 +53,7 @@ public class LocationNameServiceImpl implements LocationNameService{
     @Transactional(isolation = Isolation.READ_UNCOMMITTED, propagation = Propagation.REQUIRED)
     public String save(LocationName locationName) {
         locationNameDao.save(locationName);
-        return "Sucessfully saved Department Name";
+        return "Sucessfully saved Location Name";
     }
 
     @Override
