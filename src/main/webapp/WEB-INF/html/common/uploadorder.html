@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="head :: head"> </head>
+<body> 
+
+ <div class=" container-scroller">
+  <nav th:replace ="header::header"></nav>
+           
+  <div class="container-fluid">
+     <div class="row row-offcanvas row-offcanvas-right">
+     <nav th:replace ="cooksidebar::cooksidebar"></nav> 
+    
+ <div class="content-wrapper">
+          <h4 class="page-heading mb-4">Upload menu list</h4>
+          
+          
+          
+                <div class="line"></div>
+                <div id="msg"></div>
+          
+          <div class="card-deck">
+            <div class="card col-lg-12 px-0 mb-4">
+              <div class="card-body">       
+                         <!-- Content Start Here -->
+<form th:action="@{/cook/uploadorderform}" th:object="${menu}" method="post">  
+        <div class="row" align="right">
+                 <div class="col-lg-6 col-md-6 col-sm-6" align="right">Add</div>
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="input-group control-group after-add-more">
+			      <input th:field = "${menu.foodName}" name="addmore[]" class="form-control" placeholder="Food Name........."/>
+					<button class="btn add-more" type="button" >
+					<i class="glyphicon glyphicon-plus"></i> Add</button>
+			    </div>
+			  </div>
+
+        <div class="copy-fields hide">
+          <div class="control-group input-group" style="margin-top:10px">
+            <input type="text" name="addmore[]" class="form-control" placeholder="Food Name........."/>
+              <button class="btn remove" type="button" style="background-color:#F78181; color:#585858; outline: medium none !important;"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+          </div>
+        </div>
+		</div>
+                
+                <br/>
+                 <br/>
+                
+                
+      <div class="well">
+                 
+                 <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" align='right'> 
+                    <button id="#" type="submit" value="submit" class="btn btn-primary">Submit</button>
+                    </div>
+           
+                    <div class="col-lg-6 col-md-6 col-sm-6"> 
+                   <a  th:href="@{/cook/order}" id="#" type="submit" value="submit" class="btn btn-primary">Cancel</a>
+                   </div>
+                 </div>
+                </div> 
+</form>
+           
+           
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+    </div>   
+           
+        
+  <div th:replace ="footer::footer"></div>
+ </div>  
+<script th:utext="${msg}"></script>
+ </body>
+</html>

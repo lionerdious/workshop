@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="head :: head"> </head>
+<body> 
+
+ <div class=" container-scroller">
+  <nav th:replace ="header::header"></nav>
+           
+   <div class="container-fluid">
+     <div class="row row-offcanvas row-offcanvas-right">
+     <nav th:replace ="adminsidebar::adminsidebar"></nav> 
+         <div class="content-wrapper">
+          <h4 class="page-heading mb-4">System Users</h4>
+          
+                <div class="line"></div>
+                <div id="msg"></div>
+                
+          <div class="card-deck">
+            <div class="card col-lg-12 px-0 mb-4">
+              <div class="card-body">  
+<form>
+  <div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-9">
+   <a th:href="@{/admin/createuser}"><span class="glyphicon glyphicon-plus" title="create user"></span></a>
+   </div>
+    <div class="col-lg-3 col-md-3 col-sm-3">
+     <input class="form-control" id="system-search" name="q" placeholder="Search for" required = "required"/>
+    </div>
+  </div>
+  
+    <br />
+    <br />
+</form>  
+                <div class="table-responsive">
+                 <table class="table center-aligned-table">
+			<thead>
+                    <tr>
+                         <th>User ID</th>
+                         <th>Name</th>
+						 <th>Username</th>
+						 <th>Department</th>
+						 <th>Creation Date</th>
+                         <th>Action</th>
+                    </tr>
+            </thead>
+			
+<tbody>
+ <tr data-th-each="users : ${userss}">
+        <td data-th-text="${users.id}">...</td>
+        <td data-th-text="${users.name} +' '+ ${users.surname}">...</td>
+        <td data-th-text="${users.username}">...</td>
+        <td data-th-text="${users.department.departmentName} +' '+ ${users.department.subDepartment}">...</td>
+        <td data-th-text="${users.creationTime}">...</td>
+        <td><a th:href="@{'/admin/createuser/'}"><span class="glyphicon glyphicon-folder-open"></span></a> &nbsp;
+        <a th:onclick="'printPdf()'"> <span class="glyphicon glyphicon-print"></span></a>
+        </td>
+</tr>
+</tbody>
+ 
+	
+		</table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+    </div>   
+        
+  <div th:replace ="footer::footer"></div>
+ </div>  
+<script th:utext="${msg}"></script>
+
+ </body>
+</html>

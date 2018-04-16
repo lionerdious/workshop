@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="head :: head"> </head>
+<body> 
+
+ <div class=" container-scroller">
+  <nav th:replace ="header::header"></nav>
+           
+   <div class="container-fluid">
+     <div class="row row-offcanvas row-offcanvas-right">
+     <nav th:replace ="cooksidebar::cooksidebar"></nav> 
+    
+               <div class="content-wrapper">
+          <h4 class="page-heading mb-4">Submitted Orders</h4>
+          <div class="card-deck">
+            <div class="card col-lg-12 px-0 mb-4">
+              <div class="card-body">             
+<form>
+  <div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-9">
+   <a th:href="@{/admin/createuser}"><span class="glyphicon glyphicon-plus" title="create user"></span></a>
+   </div>
+    <div class="col-lg-3 col-md-3 col-sm-3">
+     <input class="form-control" id="system-search" name="q" placeholder="Search for" required = "required"/>
+    </div>
+  </div>
+  
+    <br />
+    <br />
+</form>       
+                <div class="table-responsive">
+                 <table class="table center-aligned-table">
+			<thead>
+                    <tr>
+                         <th>Name</th>
+						 <th>Department</th>
+						 <th>Order</th>
+						 <th>Creation Date</th>
+                    </tr>
+            </thead>
+			
+			<tbody>
+  
+<tr data-th-each="submittedOrders : ${submittedOrderss}">
+<td data-th-text="${submittedOrders.users.name} +' '+ ${submittedOrders.users.surname}"></td>
+<td data-th-text="${submittedOrders.department.departmentName} +' '+ ${submittedOrders.department.subDepartment}"></td>
+<td data-th-text="${submittedOrders.foodName} "></td>
+<td data-th-text="${submittedOrders.creationTime}">...</td>
+
+</tr>
+			</tbody>
+ 
+	
+		</table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+    </div>   
+        
+  <div th:replace ="footer::footer"></div>
+ </div>  
+
+ </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="head :: head"> </head>
+<body> 
+
+ <div class=" container-scroller">
+  <nav th:replace ="header::header"></nav>
+           
+  <div class="container-fluid">
+     <div class="row row-offcanvas row-offcanvas-right">
+     <nav th:replace ="cooksidebar::cooksidebar"></nav> 
+    
+ <div class="content-wrapper">
+          <h4 class="page-heading mb-4">Menu list</h4>
+          
+            <div class="line"></div>
+                <div id="msg"></div>
+          
+          <div class="card-deck">
+            <div class="card col-lg-12 px-0 mb-4">
+              <div class="card-body">  
+              
+              <form>
+  <div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-9">
+   <a th:href="@{/cook/uploadorder}"><span class="glyphicon glyphicon-plus" title="upload menu list"></span></a>
+   </div>
+    <div class="col-lg-3 col-md-3 col-sm-3">
+     <input class="form-control" id="system-search" name="q" placeholder="Search for" required = "required"/>
+    </div>
+  </div>
+  
+    <br />
+</form>       
+                         <!-- Content Start Here -->
+<form >  
+  
+        <div class="panel-body" style = "background-color:white;">
+        <div class="table-responsive">
+<table class="table center-aligned-table" id = "dsTable">
+  	<thead>
+                    <tr>
+                         <th>Name </th>
+						 <th>Creation Date</th>
+                         <th>Action</th>
+                    </tr>
+   </thead>
+    <tbody>
+                   <tr data-th-each="menu : ${menus}">
+    
+                         <td data-th-text="${menu.foodName}"></td>
+                         <td data-th-text="${menu.creationTime}"></td>
+                        <td>
+                           <a value="Delete" onclick="deleteRow(this)">
+                            <span class="glyphicon glyphicon-remove text-danger"  title="delete entry"></span>
+                           </a> 
+                        </td>
+                   </tr>
+    </tbody>
+</table>
+</div>
+ </div>
+ </form>
+           
+           
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+    </div>   
+           
+        
+  <div th:replace ="footer::footer"></div>
+ </div>  
+
+<script th:utext="${msg}"></script>
+ </body>
+</html>
+

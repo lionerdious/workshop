@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="loginCss :: loginCss"> </head>
+<body th:style="'background:url(' + @{/images/fee.jpg} + ');no-repeat center center fixed; background-size:100% 120%;' "> 
+
+<div id = "wrapper">
+<hgroup>
+  <h1>Welcome, Please Login</h1>
+  <p><span class="fa-stack fa-lg">
+    </span>
+  </p>
+</hgroup>
+
+                <div class="line"></div>
+                <div id="msg"></div>
+
+<form action="#" th:action="@{/login}" th:object="${user}" method="post">
+  <div class="group">  <input type="text" th:field="*{username}"/><span class="highlight"></span><span class="bar"></span>
+    <label><i class="glyphicon glyphicon-user" style = "color: white;"></i> Username</label>
+  </div>
+  <div class="group">
+    <input type="password" th:field="*{password}"/><span class="highlight"></span><span class="bar"></span>
+    <label><i class="glyphicon glyphicon-lock" style = "color: white;"></i> Password</label>
+  </div>
+  <button type="submit" class="button buttonBlue" value = "login">Login
+    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+  </button>
+</form> 
+
+
+<footer>
+  <p>Copyright &copy; 2018 Designed by  <a href="https://samvuralionel.wordpress.com" target = "_blank">Lionel Samvura</a></p>
+</footer>
+</div>
+
+<script th:utext="${msg}"></script>
+  <script th:if="${param.error}">
+           setError('Your login credentials are not correct. Please try again')
+</script>
+</body>
+</html>

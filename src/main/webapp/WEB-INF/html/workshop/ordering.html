@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="head :: head"> </head>
+<body> 
+
+ <div class=" container-scroller">
+  <nav th:replace ="header::header"></nav>
+           
+  <div class="container-fluid">
+     <div class="row row-offcanvas row-offcanvas-right">
+     <nav th:replace ="sidebar::sidebar"></nav> 
+    
+ <div class="content-wrapper">
+          <h4 class="page-heading mb-4">Place Your Order</h4>
+          
+            <div class="line"></div>
+                <div id="msg"></div>
+          
+          <div class="card-deck">
+            <div class="card col-lg-12 px-0 mb-4">
+              <div class="card-body">  
+       
+                         <!-- Content Start Here -->
+<form th:action="@{/users/orderingform}" th:object="${submittedOrders}" method="post">  
+  
+        <div class="panel-body" style = "background-color:white;">
+        <div class="table-responsive">
+<table class="table center-aligned-table">
+ 	<thead>
+                    <tr>
+                         <th>Menu List </th>
+                         <th></th>
+                    </tr>
+   </thead>
+    <tbody>
+                   <tr data-th-each="menu : ${menus}">
+    
+                         <td data-th-text="${menu.foodName}"></td>
+                         <td><input type="checkbox" name="first" class="col-sm-4"/></td>
+                   </tr>
+    </tbody>
+</table>
+
+ <br />
+ <br />
+
+<div class="well">
+                 <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" align='right'> 
+                    <button id="#" type="submit" value="submit" class="btn btn-primary">Submit</button>
+                    </div>
+           
+                    <div class="col-lg-6 col-md-6 col-sm-6"> 
+                   <a  th:href="@{/users/ordering}" id="#" type="submit" value="submit" class="btn btn-primary">Cancel</a>
+                   </div>
+                 </div>
+</div> 
+
+</div>
+ </div>
+ </form>
+           
+           
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+    </div>   
+           
+        
+  <div th:replace ="footer::footer"></div>
+ </div>  
+
+<script th:utext="${msg}"></script>
+ </body>
+</html>

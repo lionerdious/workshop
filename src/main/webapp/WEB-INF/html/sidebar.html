@@ -1,0 +1,63 @@
+
+        <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar" th:fragment="cooksidebar">
+          <div class="user-info">
+            <img src="images/face.jpg" alt="" />
+            <p class="name">PSMI ICT</p>
+            <p class="designation">Work shop</p>
+            <span class="online"></span>
+          </div>
+         <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/assets/assets}>
+                <img src="/images/020-locked.png" alt=""/>
+                <span class="menu-title">Asset registry</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/workshop/workshop}">
+                <img src="/images/5.png" alt=""/>
+                <span class="menu-title">Work Shop</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#sample-pages" aria-expanded="false" aria-controls="sample-pages">
+                <img src="/images/10.png" alt=""/>
+                <span class="menu-title">Settings<i class="fa fa-sort-down"></i></span>
+              </a>
+              <div class="collapse" id="sample-pages">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/users/}">
+                      Users
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/updateprofile/}">
+                     Update profile
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout/}">
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/cook/suborders}">
+                <img src="/images/008-list.png" alt=""/>
+                <span class="menu-title">Orders</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <img src="/images/2.png" alt=""/>
+                <span class="menu-title">Home</span>
+              </a>
+            </li>
+            
+          </ul>
+        </nav>

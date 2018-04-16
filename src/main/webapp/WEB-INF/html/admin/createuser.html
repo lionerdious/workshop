@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="head :: head"> </head>
+<body> 
+
+ <div class=" container-scroller">
+  <nav th:replace ="header::header"></nav>
+           
+  <div class="container-fluid">
+     <div class="row row-offcanvas row-offcanvas-right">
+     <nav th:replace ="adminsidebar::adminsidebar"></nav>  
+ <div class="content-wrapper">
+          <h4 class="page-heading mb-4">Create User</h4>
+          
+                <div class="line"></div>
+                <div id="msg"></div>
+          
+          <div class="card-deck">
+            <div class="card col-lg-12 px-0 mb-4">
+              <div class="card-body">    
+<form th:action="@{/admin/createuserform}" th:object="${user}" onSubmit="JavaScript:Validate()" method="post"> 
+               <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6" align="right">Name</div>
+                  <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" th:field="${user.name}"  class="form-control" required="required"/></div>
+                </div>
+                <br/>
+                <br/>
+                    <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6" align="right">Surname</div>
+                  <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" th:field="${user.surname}"  class="form-control" required="required"/></div>
+                </div>
+                <br/>
+                <br/>
+                 <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6" align="right">Username</div>
+                  <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" th:field="${user.username}"  class="form-control" required="required"/></div>
+                </div>
+                <br/>
+                <br/>
+                 <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6" align="right">Password</div>
+                  <div class="col-lg-6 col-md-6 col-sm-6"><input type="password" id = "password" th:field="${user.password}"  class="form-control"  required="required"  /></div>
+                </div>
+                
+                <br/>
+                <br/>
+                 <p id="errorid"></p>
+    <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" align='right'> 
+                    <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+                    </div>
+           
+                    <div class="col-lg-6 col-md-6 col-sm-6"> 
+                   <a  th:href="@{/admin/users}" class="btn btn-primary">Cancel</a>
+                   </div>
+                 </div>
+</form>
+           
+           
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+    </div>   
+           
+        
+  <div th:replace ="footer::footer"></div>
+ </div>  
+<script th:utext="${msg}"></script>
+ </body>
+</html>
