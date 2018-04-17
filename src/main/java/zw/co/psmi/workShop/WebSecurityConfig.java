@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/webjarsfavicon.ico", "/calendar/**", "/dist/**", "/other/**", "/logout", "/images/**").permitAll()
+                .antMatchers("/webjarsfavicon.ico", "/calendar/**", "/dist/**", "/other/**", "/logout", "/images/**","/common/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()
