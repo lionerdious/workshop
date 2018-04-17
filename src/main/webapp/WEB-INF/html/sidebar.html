@@ -1,14 +1,21 @@
 
         <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar" th:fragment="sidebar">
           <div class="user-info">
-            <img src="images/face.jpg" alt="" />
+            <img src="images/logo_star.svg" alt="" />
             <p class="name">PSMI ICT</p>
             <p class="designation">Work shop</p>
             <span class="online"></span>
           </div>
          <ul class="nav">
+             <li class="nav-item">
+              <a class="nav-link" th:href="@{/home}">
+                <img src="/images/2.png" alt=""/>
+                <span class="menu-title">Home</span>
+              </a>
+            </li>
+             
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/assets/assets}"> <img src="/images/020-locked.png" alt=""/>
+                <a class="nav-link" th:href="@{/assets/assets}"> <img src="/images/1.png" alt=""/>
                 <span class="menu-title">Asset registry</span>
               </a>
             </li>
@@ -46,15 +53,15 @@
             
             
             <li class="nav-item">
-              <a class="nav-link" th:href="@{/cook/suborders}">
+              <a class="nav-link" th:href="@{/common/site}">
                 <img src="/images/008-list.png" alt=""/>
-                <span class="menu-title">Orders</span>
+                <span class="menu-title">Sites</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/">
-                <img src="/images/2.png" alt=""/>
-                <span class="menu-title">Home</span>
+              <a class="nav-link" th:href="@{/common/location}">
+                <img src="/images/001-map.png" alt=""/>
+                <span class="menu-title">Locations</span>
               </a>
             </li>
             

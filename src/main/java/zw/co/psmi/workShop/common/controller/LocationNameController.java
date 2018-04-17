@@ -48,7 +48,7 @@ public class LocationNameController {
     public String locationNameform(@AuthenticationPrincipal Login userLogin, @ModelAttribute LocationName locationName, Model model, RedirectAttributes redirectAttributes) {
         String msg = this.locationNameService.save(locationName);
         redirectAttributes.addFlashAttribute("msg", "setMsg('" + msg + "')");
-        return "redirect:/common/locationnameform";
+        return "redirect:/common/locationname";
     }
 
     @InitBinder

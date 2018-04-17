@@ -11,26 +11,41 @@
                     <nav th:replace ="sidebar::sidebar"></nav> 
 
                     <div class="content-wrapper">
-                        <h4 class="page-heading mb-4">Create/Update Location name</h4>
+                        <h4 class="page-heading mb-4">Create/Update Site</h4>
                         <div class="card-deck">
                             <div class="card col-lg-12 px-0 mb-4">
                                 <div class="card-body">
                                     <!-- Content Start Here --> 
 
-                                    <form action="#" th:action="@{'/common/siteform/'+${id}}" th:object="${site}" method="post">
+                                    <form action="#" th:action="@{/common/siteform/}" th:object="${site}" method="post">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6" align="right">Name</div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" readonly="readonly" class="form-control" th:field="*{name}"  />
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text"  class="form-control" th:field="*{name}"  />
                                                 <input type="hidden" class="form-control" th:field="*{id}"  />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6" align="right">Address</div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" readonly="readonly" class="form-control" th:field="*{address}"  /> </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text"  class="form-control" th:field="*{address}"  /> </div>
                                         </div>
-                                        <div class="tell">
+                                        <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6" align="right">Phone number</div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" readonly="readonly" class="form-control" th:field="*{tell}"  /> </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" class="form-control" th:field="*{tell}"  /> </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">Region</div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><select class="form-control" data-style="btn-default" th:field="*{region}"  >
+                                                    <option value="0">Choose Region</option>
+                                                    <option th:each="region : ${region}" 
+                                                            th:value="${region}" 
+                                                            th:text="${region}">....</option>  </select></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">Active</div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><select class="form-control" th:field="*{activeStatus}" >
+                                                    <option value="0" >No</option>
+                                                    <option value="1" >Yes</option>
+                                                </select></div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6" align="right"><input type="submit" value="Submit" class="btn btn-primary" /></div>

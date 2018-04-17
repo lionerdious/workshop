@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import zw.co.psmi.workShop.Pager;
 import static zw.co.psmi.workShop.Utils.prepairString;
 import zw.co.psmi.workShop.auth.entity.Login;
+import zw.co.psmi.workShop.common.entity.Region;
 import zw.co.psmi.workShop.common.entity.Site;
 import zw.co.psmi.workShop.common.service.SiteService;
 
@@ -74,6 +75,7 @@ public class SiteController {
     public String siteAction(@AuthenticationPrincipal Login userLogin, @PathVariable("Id") Long Id, Model model) {
         Site site = this.siteService.getByID(Id);
         model.addAttribute("site", site);
+        model.addAttribute("region", Region.values());
         return "/common/siteaction";
     }
 
