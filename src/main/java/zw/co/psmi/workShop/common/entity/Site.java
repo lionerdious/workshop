@@ -7,6 +7,8 @@ package zw.co.psmi.workShop.common.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
@@ -24,6 +26,6 @@ public class Site extends BaseEntity{
     private String name;
     private String address;
     private String tell;
-    @ManyToOne
+    @Enumerated(EnumType.STRING)
     private Region region;
 }

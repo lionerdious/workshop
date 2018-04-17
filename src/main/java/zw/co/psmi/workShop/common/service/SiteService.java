@@ -6,6 +6,8 @@
 package zw.co.psmi.workShop.common.service;
 
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import zw.co.psmi.workShop.basic.BasicService;
 import zw.co.psmi.workShop.common.entity.Site;
 
@@ -15,4 +17,5 @@ import zw.co.psmi.workShop.common.entity.Site;
  */
 public interface SiteService extends BasicService<Site>{
     public List<Site> findAllActive();
+    public Page<Site> findByNamePageable(Pageable pageable, String prepairString);
 }

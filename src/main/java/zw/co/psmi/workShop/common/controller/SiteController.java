@@ -5,7 +5,12 @@
  */
 package zw.co.psmi.workShop.common.controller;
 
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +20,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import zw.co.psmi.workShop.Pager;
+import static zw.co.psmi.workShop.Utils.prepairString;
 import zw.co.psmi.workShop.auth.entity.Login;
 import zw.co.psmi.workShop.common.entity.Site;
 import zw.co.psmi.workShop.common.service.SiteService;
@@ -24,15 +32,41 @@ import zw.co.psmi.workShop.common.service.SiteService;
  *
  * @author lionel
  */
-
 @Controller
 public class SiteController {
+
+    private static final int BUTTONS_TO_SHOW = 5;
+    private static final int INITIAL_PAGE = 0;
+    private static final int INITIAL_PAGE_SIZE = 25;
+    private static final int[] PAGE_SIZES = {10, 25, 50, 100, 250};
+
     @Autowired
     private SiteService siteService;
-    
+
     @RequestMapping(value = "/common/site", method = RequestMethod.GET)
-    public String site(@AuthenticationPrincipal Login userLogin, Model model) {
-        model.addAttribute("sites", this.siteService.findAll());
+    public String site(@AuthenticationPrincipal Login userLogin,
+            @RequestParam(required = false) String name, Model model, @RequestParam("pageSize") Optional<Integer> pageSize,
+            @RequestParam("page") Optional<Integer> page) {
+
+        int evalPageSize = pageSize.orElse(INITIAL_PAGE_SIZE);
+        int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
+
+        Pageable pageable = new PageRequest(evalPage, evalPageSize);
+        Page<Site> sitePages = siteService.findByNamePageable(pageable, prepairString(name));
+        Pager pager = new Pager(sitePages.getTotalPages(), sitePages.getNumber(), BUTTONS_TO_SHOW);
+
+        List<Site> siteList = sitePages.getContent();
+
+        sitePages.isFirst();
+        sitePages.isLast();
+        sitePages.getTotalPages();
+
+        model.addAttribute("sites", sitePages);
+        model.addAttribute("selectedPageSize", evalPageSize);
+        model.addAttribute("pageSizes", PAGE_SIZES);
+        model.addAttribute("pager", pager);
+
+        model.addAttribute("sitess", this.siteService.findAll());
         return "/common/site";
     }
 
