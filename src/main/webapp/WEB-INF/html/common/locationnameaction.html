@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+    <head lang="en" th:replace="head :: head"> </head>
+    <body> 
+
+        <div class=" container-scroller">
+            <nav th:replace ="header::header"></nav>
+
+            <div class="container-fluid">
+                <div class="row row-offcanvas row-offcanvas-right">
+                    <nav th:replace ="sidebar::sidebar"></nav> 
+
+                    <div class="content-wrapper">
+                        <h4 class="page-heading mb-4">Locations List</h4>
+                        <div class="card-deck">
+                            <div class="card col-lg-12 px-0 mb-4">
+                                <div class="card-body">
+                                    <!-- Content Start Here --> 
+
+                                    <form action="#" th:action="@{'/common/locationnameform/'+${id}}" th:object="${locationName}" method="post">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">Name</div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" readonly="readonly" class="form-control" th:field="*{name}"  />
+                                                <input type="hidden" class="form-control" th:field="*{id}"  />
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right"><input type="submit" value="Submit" class="btn btn-primary" /></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><a th:href="@{/common/locationname/}"  class="btn btn-primary">Cancel</a></div>
+                                        </div>
+                                    </form>
+
+                                    <!-- Content End Here -->   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+
+            <div th:replace ="footer::footer"></div>
+            <script th:utext="${msg}"></script>
+        </div>  
+
+    </body>
+</html>
