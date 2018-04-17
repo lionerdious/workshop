@@ -17,17 +17,24 @@
                                 <div class="card-body">
                                     <!-- Content Start Here --> 
 
-                                    <form action="#" th:action="@{'/common/locationnameform/'+${id}}" th:object="${locationName}" method="post">
+                                    <form action="#" th:action="@{'/common/siteform/'+${id}}" th:object="${site}" method="post">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6" align="right">Name</div>
                                             <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" readonly="readonly" class="form-control" th:field="*{name}"  />
                                                 <input type="hidden" class="form-control" th:field="*{id}"  />
                                             </div>
                                         </div>
-
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">Address</div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" readonly="readonly" class="form-control" th:field="*{address}"  /> </div>
+                                        </div>
+                                        <div class="tell">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">Phone number</div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" readonly="readonly" class="form-control" th:field="*{tell}"  /> </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6" align="right"><input type="submit" value="Submit" class="btn btn-primary" /></div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6"><a th:href="@{/common/locationname/}"  class="btn btn-primary">Cancel</a></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><a th:href="@{/common/site/}"  class="btn btn-primary">Cancel</a></div>
                                         </div>
                                     </form>
 

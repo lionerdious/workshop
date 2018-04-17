@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+    <head lang="en" th:replace="head :: head"> </head>
+    <body> 
+
+        <div class=" container-scroller">
+            <nav th:replace ="header::header"></nav>
+
+            <div class="container-fluid">
+                <div class="row row-offcanvas row-offcanvas-right">
+                    <nav th:replace ="sidebar::sidebar"></nav> 
+
+                    <div class="content-wrapper">
+                        <h4 class="page-heading mb-4">Site List</h4>
+                        <div class="card-deck">
+                            <div class="card col-lg-12 px-0 mb-4">
+                                <div class="card-body">
+                                    <!-- Content Start Here -->   
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12"><a th:href="@{/common/siteaction}"><span class="glyphicon glyphicon-plus" title="locationaction"></span></a></div>
+                                    </div>    
+<!--                                    <form th:method="get"  th:action="@{'/common/location/'}"  th:object="${locationname}" class="form-inline">
+                                        <span class="add-on">From</span>
+                                        <input type="text" class="form-control" th:field="*{startDate}" /> 
+                                        <span class="add-on">To</span>
+                                        <input type="text" class="form-control" th:field="*{endDate}" />  
+                                        <button type="submit" class="btn btn-success">Search</button>
+                                    </form>      -->
+                                    <div class="table-responsive">
+                                        <table class="table center-aligned-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Action</th>
+                                                    <th>Name</th>
+                                                    <th>Status</th>
+                                                    <th>Creation Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr data-th-each="location : ${locationnames}">
+                                                    <td><a th:href="@{'/common/locationaction/' + ${id}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                                    <td data-th-text="${name}"></td>
+                                                    <td data-th-text="${address}"></td>
+                                                    <td data-th-text="${tell}"></td>
+                                                    <td data-th-text="${status}"></td>
+                                                    <td data-th-text="${creationDate} "></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Content End Here -->   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+
+            <div th:replace ="footer::footer"></div>
+            <script th:utext="${msg}"></script>
+        </div>  
+
+    </body>
+</html>
