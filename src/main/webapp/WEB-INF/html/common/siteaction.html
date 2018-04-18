@@ -25,6 +25,19 @@
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">LOB</div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><select class="form-control" data-style="btn-default" th:field="*{lob}"  >
+                                                    <option value="0">Choose Region</option>
+                                                    <option th:each="lob : ${lob}" 
+                                                            th:value="${lob}" 
+                                                            th:text="${lob}">....</option>  </select></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">City</div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text"  class="form-control" th:field="*{city}"  />
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6" align="right">Address</div>
                                             <div class="col-lg-6 col-md-6 col-sm-6"><input type="text"  class="form-control" th:field="*{address}"  /> </div>
                                         </div>

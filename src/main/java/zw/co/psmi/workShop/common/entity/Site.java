@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 import zw.co.psmi.workShop.basic.BaseEntity;
@@ -24,8 +23,11 @@ import zw.co.psmi.workShop.basic.BaseEntity;
 public class Site extends BaseEntity{
     @Column(unique = true)
     private String name;
+    private String city;
     private String address;
     private String tell;
     @Enumerated(EnumType.STRING)
     private Region region;
+    @Enumerated(EnumType.STRING)
+    private LOB lob;
 }

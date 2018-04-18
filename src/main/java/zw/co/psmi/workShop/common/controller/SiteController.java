@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import zw.co.psmi.workShop.Pager;
 import static zw.co.psmi.workShop.Utils.prepairString;
 import zw.co.psmi.workShop.auth.entity.Login;
+import zw.co.psmi.workShop.common.entity.LOB;
 import zw.co.psmi.workShop.common.entity.Region;
 import zw.co.psmi.workShop.common.entity.Site;
 import zw.co.psmi.workShop.common.service.SiteService;
@@ -76,6 +77,7 @@ public class SiteController {
         Site site = this.siteService.getByID(Id);
         model.addAttribute("site", site);
         model.addAttribute("region", Region.values());
+        model.addAttribute("lob", LOB.values());
         return "/common/siteaction";
     }
 
@@ -83,7 +85,7 @@ public class SiteController {
     public String siteform(@AuthenticationPrincipal Login userLogin, @ModelAttribute Site site, Model model, RedirectAttributes redirectAttributes) {
         String msg = this.siteService.save(site);
         redirectAttributes.addFlashAttribute("msg", "setMsg('" + msg + "')");
-        return "redirect:/common/siteform";
+        return "redirect:/common/site";
     }
 
     @InitBinder
