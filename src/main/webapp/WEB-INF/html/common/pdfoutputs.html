@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+    <head lang="en" th:replace="head :: head"> </head>
+    <body> 
+
+        <div class=" container-scroller">
+            <nav th:replace ="header::header"></nav>
+
+            <div class="container-fluid">
+                <div class="row row-offcanvas row-offcanvas-right">
+                    <nav th:replace ="sidebar::sidebar"></nav> 
+                    <div class="content-wrapper">
+                        <h4 class="page-heading mb-4">Pdf Outputs</h4>
+                        <div class="card-deck">
+                            <div class="card col-lg-12 px-0 mb-4">
+                                <div class="card-body">
+                                    <!-- Content Start Here --> 
+
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12"><a th:href="@{'/common/pdfoutputsaction/0'}"><span class="glyphicon glyphicon-plus"></span></a></div>
+                                    </div>
+                                    <table class="table">
+                                        <tr>
+                                            <th>Action</th>
+                                            <th>Name</th>
+                                            <th>Active</th>
+                                        </tr>
+                                        <tr data-th-each="pdfoutputs : ${pdfOutputss}">
+                                            <td><a th:href="@{'/common/pdfoutputsaction/' + ${pdfoutputs.Id}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                            <td data-th-text="${pdfoutputs.name}">...</td>
+                                            <td><div th:if="${pdfoutputs.activeStatus}"> Yes </div><div th:if="${!pdfoutputs.activeStatus}">No</div></td>
+                                        </tr>
+                                    </table>
+                                    <!-- Content End Here -->   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+
+            <div th:replace ="footer::footer"></div>
+            <script th:utext="${msg}"></script>
+        </div>  
+
+    </body>
+</html>
