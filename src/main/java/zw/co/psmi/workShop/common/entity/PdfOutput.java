@@ -22,4 +22,5 @@ import zw.co.psmi.workShop.basic.BaseEntity;
 public class PdfOutput extends BaseEntity {
     private String name;
     @Lob
-    private byte[] jasperData;}
+    private byte[] jasperData;
+}
