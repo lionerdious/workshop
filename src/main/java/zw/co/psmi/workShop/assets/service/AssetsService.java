@@ -5,10 +5,17 @@
  */
 package zw.co.psmi.workShop.assets.service;
 
+import java.util.List;
+import zw.co.psmi.workShop.assets.entity.Assets;
+import zw.co.psmi.workShop.basic.BasicService;
+
 /**
  *
  * @author lionel
  */
-public interface AssetsService {
-    
+public interface AssetsService extends BasicService<Assets> {
+
+    public List<Assets> findAllActive();
+
+    public List<Assets> findByAllBYSearchCriteria(Assets assets);
 }
