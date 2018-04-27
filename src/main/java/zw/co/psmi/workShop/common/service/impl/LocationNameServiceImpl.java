@@ -23,6 +23,7 @@ import zw.co.psmi.workShop.common.service.LocationNameService;
 
 @Service
 public class LocationNameServiceImpl implements LocationNameService{
+    @Autowired
     private LocationNameDao locationNameDao;
     
     @Autowired
