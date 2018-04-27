@@ -8,6 +8,7 @@ package zw.co.psmi.workShop.assets.entity;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,12 +24,13 @@ import zw.co.psmi.workShop.common.entity.Site;
  * @author lionel
  */
 @Entity
-@Table(name="site")
+@Table(name="assets")
 @Data
 public class Assets extends BaseEntity{
     @Column(unique = true)
     private String serial;
     private String model;
+    @ManyToOne
     private Site site;
     private LocationName locationName;    
     @Temporal(javax.persistence.TemporalType.DATE)
