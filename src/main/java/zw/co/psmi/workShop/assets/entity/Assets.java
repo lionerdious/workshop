@@ -29,6 +29,8 @@ import zw.co.psmi.workShop.common.entity.Site;
 public class Assets extends BaseEntity{
     @Column(unique = true)
     private String serial;
+    @ManyToOne
+    private AssetType assetType;
     private String model;
     @ManyToOne
     private Site site;

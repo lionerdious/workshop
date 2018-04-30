@@ -49,6 +49,7 @@ public class AssetsController {
     public String assetmanagement(@AuthenticationPrincipal Login userLogin, Model model, @ModelAttribute Assets assets) {
         assets = assets == null ? new Assets() : assets;
         model.addAttribute("assetss", assetsService.findByAllBYSearchCriteria(assets));
+        model.addAttribute("regions", assets);
         model.addAttribute("assets", assets);
         return "stocks/bookstock";
     }

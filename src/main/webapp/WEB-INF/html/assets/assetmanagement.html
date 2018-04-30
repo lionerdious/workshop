@@ -11,7 +11,7 @@
                     <nav th:replace ="sidebar::sidebar"></nav> 
 
                     <div class="content-wrapper">
-                        <h4 class="page-heading mb-4">Asset Type List</h4>
+                        <h4 class="page-heading mb-4">Assets List</h4>
                         <div class="card-deck">
                             <div class="card col-lg-12 px-0 mb-4">
                                 <div class="card-body">
@@ -19,7 +19,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12"><a th:href="@{/assets/assetsmanagementaction/0}"><span class="glyphicon glyphicon-plus" title="assettypeaction"></span></a></div>
                                     </div>    
-                                    <form th:method="get"  th:action="@{'/assets/location/'}"  th:object="${assets}" class="form-inline">
+                                    <form th:method="get"  th:action="@{'/assets/assetmanagement/'}"  th:object="${assets}" class="form-inline">
                                         <span class="add-on">From</span>
                                         <input type="text" class="form-control" th:field="*{startDate}" /> 
                                         <span class="add-on">To</span>
@@ -31,13 +31,21 @@
                                             <thead>
                                                 <tr>
                                                     <th>Action</th>
-                                                    <th>Name</th>
+                                                    <th>Asset Type</th>
+                                                    <th>Model</th>
+                                                    <th>Serial</th>
+                                                    <th>Purchased</th>
+                                                    <th>Site</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr data-th-each="assetType : ${assetTypes}">
-                                                    <td><a th:href="@{'/assets/assettypeaction/' + ${assetType.id}}"><span class="glyphicon glyphicon-edit"></span></a></td>
-                                                    <td data-th-text="${assetType.name}"></td>
+                                                <tr data-th-each="assets : ${assetss}">
+                                                    <td><a th:href="@{'/assets/assetsmanagementaction/' + ${assets.id}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                                    <td data-th-text="${assets.assetType}"></td>
+                                                    <td data-th-text="${assets.model}"></td>
+                                                    <td data-th-text="${assets.serial}"></td>
+                                                    <td data-th-text="${assets.purchaseDate}"></td>
+                                                    <td data-th-text="${assets.site.name}"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
