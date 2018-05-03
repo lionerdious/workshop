@@ -46,7 +46,9 @@
                                             </thead>
                                             <tbody>
                                                 <tr data-th-each="assets : ${assetss}">
-                                                    <td><a th:href="@{'/assets/assetsmanagementaction/' + ${assets.id}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                                    <td><a th:href="@{'/assets/assetsmanagementaction/' + ${assets.id}}"><span class="glyphicon glyphicon-edit"></span></a>&nbsp;
+                                                        <a th:onclick="'printPdf(\'/common/output/' + ${assets.id}+'/ASSET_REGISTRATION\')'"><span class="glyphicon glyphicon-print"style="color:blue"></span></a>&nbsp;
+                                                        <a th:onclick="'printPdf(\'/common/output/' + ${assets.id}+'/ASSET_MOVEMENT\')'"><span class="glyphicon glyphicon-print"style="color:green"></span></a></td>
                                                     <td data-th-text="${assets.assetType}"></td>
                                                     <td data-th-text="${assets.model}"></td>
                                                     <td data-th-text="${assets.serial}"></td>

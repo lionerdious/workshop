@@ -24,6 +24,8 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import zw.co.psmi.workShop.assets.entity.Assets;
+import zw.co.psmi.workShop.assets.service.AssetsService;
 import zw.co.psmi.workShop.auth.entity.Login;
 import zw.co.psmi.workShop.common.dao.PdfOutputDao;
 import zw.co.psmi.workShop.common.entity.PdfOutput;
@@ -38,7 +40,10 @@ import zw.co.psmi.workShop.common.service.PdfOutputService;
 @Slf4j
 public class PdfOutputServiceImpl implements PdfOutputService {
 
+    @Autowired
     private PdfOutputDao reportDao;
+    @Autowired
+    private AssetsService assetsService;
 
     @Autowired
     public PdfOutputServiceImpl(PdfOutputDao reportDao) {
@@ -99,12 +104,33 @@ public class PdfOutputServiceImpl implements PdfOutputService {
         if ("ASSET_REGISTRATION".contentEquals("ASSET_REGISTRATION")) {
             return outputReport(findReportModelByAssetId(id));
         }
+        if ("ASSET_MOVEMENT".contentEquals("ASSET_REGISTRATION")) {
+            return outputReport(findAssetMovementByAssetId(id));
+        }
         log.error("Output not found:{} id:{}", type, id);
         return "".getBytes();
     }
 
-    @Override
-    public PdfOutputModel findReportModelByAssetId(Long id) {
+    private PdfOutputModel findReportModelByAssetId(Long id) {
+        Assets asset = assetsService.getByID(id);
+        PdfOutputModel reportModel = new PdfOutputModel();
+        reportModel.setReportName("ASSET_REGISTRATION");
+        Map<String, Object> parameterMap = new HashMap<>();
+        parameterMap.put("type", "" + asset.getAssetType().getName());
+        parameterMap.put("model", "" + asset.getModel());
+        parameterMap.put("serial", "" + asset.getSerial());
+        parameterMap.put("location", "" + asset.getLocationName().getName());
+        parameterMap.put("region", "" + asset.getSite().getRegion().name());
+        parameterMap.put("site", "" + asset.getSite().getName());
+        parameterMap.put("city", "" + asset.getSite().getCity());
+        parameterMap.put("address", "" + asset.getSite().getAddress());
+        parameterMap.put("tell", "" + asset.getSite().getTell());
+        parameterMap.put("lob", "" + asset.getSite().getLob());
+        reportModel.setParameter(parameterMap);
+        return reportModel;
+    }
+
+    private PdfOutputModel findAssetMovementByAssetId(Long id) {
 //        Assets asset = assetsService.getByID(id);
         PdfOutputModel reportModel = new PdfOutputModel();
 //        reportModel.setReportName("ASSET_REGISTRATION");

@@ -26,5 +26,4 @@ public interface PdfOutputService extends BasicService<PdfOutput> {
     
     public byte[] outputReport(Long id, String type);
     
-    public PdfOutputModel findReportModelByAssetId(Long id);
 }

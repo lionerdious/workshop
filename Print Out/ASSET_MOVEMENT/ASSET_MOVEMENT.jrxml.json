@@ -1,0 +1,42 @@
+{
+  "hm": {
+    "adjustmentReason": "adjustmentReason",
+    "receiptNumber": "receiptNumber",
+    "receiptLocation": "receiptLocation",
+    "receiptDate": "issueDate",
+    "remarks": "remarks",
+    "userName": "userName",
+    "unitAddress": "unitAddress",
+    "unitName": "unitName",
+    "grandTotal": "grandTotal"
+  },
+  "datalist": [
+    {
+      "expiryDate": "expiryDate",
+      "itemName": "itemName",
+      "quantity": "quantity",
+      "srNo": "srNo",
+      "unitCost": "unitCost",
+      "totalCost": "totalCost",
+      "batchNumber": "batchNumber"
+    },
+    {
+      "expiryDate": "expiryDate",
+      "itemName": "itemName",
+      "quantity": "quantity",
+      "srNo": "srNo",
+      "unitCost": "unitCost",
+      "totalCost": "totalCost",
+      "batchNumber": "batchNumberbatchNumberbatchNumber"
+    },
+{
+     "expiryDate": "expiryDate",
+      "itemName": "itemName",
+      "quantity": "quantity",
+      "srNo": "srNo",
+      "unitCost": "unitCost",
+      "totalCost": "totalCost",
+      "batchNumber": "batchNumber"
+    }
+  ]
+}

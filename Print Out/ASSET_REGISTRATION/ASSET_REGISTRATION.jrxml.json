@@ -1,0 +1,41 @@
+{
+  "hm": {
+    "adjustmentReason": "adjustmentReason",
+    "issueNumber": "issueNumber",
+    "location": "location",
+    "issueDate": "issueDate",
+    "userName": "userName",
+    "unitName": "unitName",
+    "unitAddress": "unitAddress",
+    "grandTotalcost": "grandTotalcost",
+     "remarks" :  "remarks"
+  },
+  "datalist": [
+    {"expiryDate": "expiryDate",
+      "itemName": "itemName",
+      "quantity": "quantity",
+      "srNo": "srNo",
+      "unitCost": "unitCost",
+      "totalCost": "totalCost",
+      "batchNumber": "batchNumber"
+    },
+    {
+      "expiryDate": "expiryDate",
+      "itemName": "itemName",
+      "quantity": "quantity",
+      "srNo": "srNo",
+      "unitCost": "unitCost",
+      "totalCost": "totalCost",
+      "batchNumber": "batchNumber"
+    },
+{
+      "expiryDate": "expiryDate3",
+      "itemName": "itemName3",
+      "quantity": "quantity3",
+      "srNo": "srNo3",
+      "unitCost": "unitCost3",
+      "totalCost": "totalCost3",
+      "batchNumber": "batchNumber3"
+    }
+  ]
+}
