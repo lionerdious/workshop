@@ -7,6 +7,7 @@ package zw.co.psmi.workShop.common.service.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -126,6 +127,13 @@ public class PdfOutputServiceImpl implements PdfOutputService {
         parameterMap.put("address", "" + asset.getSite().getAddress());
         parameterMap.put("tell", "" + asset.getSite().getTell());
         parameterMap.put("lob", "" + asset.getSite().getLob());
+        parameterMap.put("purchaseDate", "" + asset.getPurchaseDate() );
+        
+        List<Map<String, String>> fieldsList = new ArrayList<>();
+        Map<String, String> fileldsMap = new HashMap<>();
+        fieldsList.add(fileldsMap);
+        reportModel.setFileldslist(fieldsList);
+        
         reportModel.setParameter(parameterMap);
         return reportModel;
     }
