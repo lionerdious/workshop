@@ -23,7 +23,13 @@
                                         <span class="add-on">From</span>
                                         <input type="text" class="form-control" th:field="*{startDate}" /> 
                                         <span class="add-on">To</span>
-                                        <input type="text" class="form-control" th:field="*{endDate}" />  
+                                        <input type="text" class="form-control" th:field="*{endDate}" />
+                                        <select class="selectpicker" data-style="btn-default"  data-live-search="true" th:field="*{site.region}" >
+                                            <option value="0">All Regions</option>
+                                            <option th:each="region : ${regions}"
+                                                    th:value="${region}"
+                                                    th:text="${region}">....</option>
+                                        </select>
                                         <button type="submit" class="btn btn-success">Search</button>
                                     </form>      
                                     <div class="table-responsive">

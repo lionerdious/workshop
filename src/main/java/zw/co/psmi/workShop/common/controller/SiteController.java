@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import zw.co.psmi.workShop.Pager;
 import static zw.co.psmi.workShop.Utils.prepairString;
@@ -86,6 +87,13 @@ public class SiteController {
         String msg = this.siteService.save(site);
         redirectAttributes.addFlashAttribute("msg", "setMsg('" + msg + "')");
         return "redirect:/common/site";
+    }
+    
+    @RequestMapping(value = "/assets/sitessearchlist", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Site> findAllStockType(@RequestParam(value = "name", required = true) String name) {
+        List<Site> site = siteService.findByNameSearch(name);
+        return site;
     }
 
     @InitBinder

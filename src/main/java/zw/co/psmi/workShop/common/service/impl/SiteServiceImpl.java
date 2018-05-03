@@ -69,4 +69,9 @@ public class SiteServiceImpl implements SiteService {
         return siteDao.findByNameContainingAndActiveStatusTrue(name, pageable);
     }
 
+    @Override
+    public List<Site> findByNameSearch(String name) {
+         return siteDao.findByName(name);
+    }
+
 }

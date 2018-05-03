@@ -18,4 +18,5 @@ import zw.co.psmi.workShop.common.entity.Site;
 public interface SiteService extends BasicService<Site>{
     public List<Site> findAllActive();
     public Page<Site> findByNamePageable(Pageable pageable, String prepairString);
+    public List<Site> findByNameSearch(String name);
 }

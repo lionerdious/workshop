@@ -1,16 +1,96 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+    <head lang="en" th:replace="head :: head"> </head>
+    <body> 
+
+        <div class=" container-scroller">
+            <nav th:replace ="header::header"></nav>
+
+            <div class="container-fluid">
+                <div class="row row-offcanvas row-offcanvas-right">
+                    <nav th:replace ="sidebar::sidebar"></nav> 
+
+                    <div class="content-wrapper">
+                        <h4 class="page-heading mb-4">Create/Update Assets</h4>
+                        <div class="card-deck">
+                            <div class="card col-lg-12 px-0 mb-4">
+                                <div class="card-body">
+                                    <!-- Content Start Here --> 
+
+                                    <form action="#" th:action="@{/assets/assetmanagementform/}" th:object="${assets}" method="post">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">Serial</div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" class="form-control" th:field="*{serial}"  />
+                                                <input type="hidden" class="form-control" th:field="*{id}"  />
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">Asset</div>
+                                            <select class="selectpicker" data-style="btn-default"  data-live-search="true" th:field="*{assetType}" >
+                                                <option value="0">All Regions</option>
+                                                <option th:each="assetType : ${assetTypes}"
+                                                        th:value="${assetType.id}"
+                                                        th:text="${assetType.name}">....</option>
+                                            </select>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">Model</div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><input type="text" class="form-control" th:field="*{model}"  />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right">Location</div>
+                                            <select class="selectpicker" data-style="btn-default"  data-live-search="true" th:field="*locationName}" >
+                                                <option value="0">All Regions</option>
+                                                <option th:each="locationName : ${locationNames}"
+                                                        th:value="${locationName.id}"
+                                                        th:text="${locationName.name}">....</option>
+                                            </select>
+                                        </div>                                       
+
+                                        <div class="row">
+                                            <div th:if='${site.id == 0}' >
+                                                <div class="form-group">  <input class="form-control" type="text" id="sitesText" onkeyup="getSitesList()"  placeholder="Search Site List" /> 
+                                                    <select class="selectpicker" data-style="btn-default"  data-live-search="true" th:field="*{site}"  validate="1" data-empty-error="Site cannot be empty" >
+
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+
+                                                </div>
+                                            </div>
+                                            <div th:unless='${site.id == 0}' >
+                                                <input class="form-control" type="text" th:field="*{site.name}" readonly="readonly" />
+                                                <input class="form-control" type="hidden" th:field="*{site}" readonly="readonly" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row">                      
+                                            <div class="col-lg-4 col-md-4 col-sm-4"><div class="form-group">
+                                                    <label for="purchaseDate">Purchase Date(yyyy-mm-dd)</label>
+                                                    <input type="text" class="form-control purchaseDate" name="purchaseDate" date-max="today" date-max-error="Date Of Purchase cannot be any day in the future" id="purchaseDate" th:value="*{#dates.format(purchaseDate, 'yyyy-MM-dd')}" validate="1" data-empty-error="Date of Purchase Date cannot be empty" pattern-custom="yyyy-mm-dd" data-pattern-error="Invalid Date of Birth Date Format. Please Enter as YYYY-MM-DD"  required="required" />    
+                                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                                    <div class="help-block with-errors">Purchase Date cannot be empty</div>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6" align="right"><input type="submit" value="Submit" class="btn btn-primary" /></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6"><a th:href="@{/assets/assettypes/}"  class="btn btn-primary">Cancel</a></div>
+                                        </div>
+                                    </form>
+
+                                    <!-- Content End Here -->   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+
+            <div th:replace ="footer::footer"></div>
+            <script th:utext="${msg}"></script>
+        </div>  
+
     </body>
 </html>

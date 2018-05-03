@@ -16,8 +16,13 @@ import zw.co.psmi.workShop.common.entity.Site;
  *
  * @author lionel
  */
-public interface SiteDao extends JpaRepository<Site, Long>{
-     List<Site> findByActiveStatusTrue();
-    List<Site> findByActiveStatusTrueAndNameContaining(String name);
+public interface SiteDao extends JpaRepository<Site, Long> {
+
+    public List<Site> findByActiveStatusTrue();
+
+    public List<Site> findByActiveStatusTrueAndNameContaining(String name);
+
     public Page<Site> findByNameContainingAndActiveStatusTrue(String name, Pageable pageable);
+
+    public List<Site> findByName(String name);
 }

@@ -21,8 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import zw.co.psmi.workShop.assets.entity.Assets;
+import zw.co.psmi.workShop.assets.service.AssetTypeService;
 import zw.co.psmi.workShop.assets.service.AssetsService;
 import zw.co.psmi.workShop.auth.entity.Login;
+import zw.co.psmi.workShop.common.service.LocationNameService;
+import zw.co.psmi.workShop.common.service.SiteService;
 
 /**
  *
@@ -34,10 +37,19 @@ public class AssetsController {
 
     @Autowired
     private AssetsService assetsService;
+    @Autowired
+    private AssetTypeService assetTypeService;
+    @Autowired
+    private LocationNameService locationNameService;
+    @Autowired
+    private SiteService siteService;
 
     @Autowired
-    public AssetsController(AssetsService assetsService) {
+    public AssetsController(AssetsService assetsService, AssetTypeService assetTypeService, LocationNameService locationNameService, SiteService siteService) {
         this.assetsService = assetsService;
+        this.assetTypeService = assetTypeService;
+        this.locationNameService = locationNameService;
+        this.siteService = siteService;
     }
 
     @InitBinder
@@ -59,6 +71,9 @@ public class AssetsController {
         Assets assets = assetsService.getByID(Id);
         assets = assets == null ? new Assets() : assets;
         model.addAttribute("assets", assets);
+        model.addAttribute("assetTypes", assetTypeService.findAllActive());
+        model.addAttribute("locationNames", locationNameService.findAllActive());
+        model.addAttribute("sites", siteService.findAllActive());
         return "stocks/bookstockaction";
     }
 
@@ -68,5 +83,7 @@ public class AssetsController {
         redirectAttributes.addFlashAttribute("msg", "setMsg('" + msg + "')");
         return "redirect:/stocks/bookstock";
     }
+    
+    
 
 }
