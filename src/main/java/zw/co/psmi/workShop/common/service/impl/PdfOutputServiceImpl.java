@@ -131,6 +131,7 @@ public class PdfOutputServiceImpl implements PdfOutputService {
         
         List<Map<String, String>> fieldsList = new ArrayList<>();
         Map<String, String> fileldsMap = new HashMap<>();
+        
         fieldsList.add(fileldsMap);
         reportModel.setFileldslist(fieldsList);
         
