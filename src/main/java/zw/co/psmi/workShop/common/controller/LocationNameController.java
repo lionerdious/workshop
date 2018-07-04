@@ -34,14 +34,14 @@ public class LocationNameController {
     @RequestMapping(value = "/common/locationname", method = RequestMethod.GET)
     public String locationName(@AuthenticationPrincipal Login userLogin, Model model) {
         model.addAttribute("locationNames", this.locationNameService.findAll());
-        return "/common/locationname";
+        return "common/locationname";
     }
 
     @RequestMapping(value = "/common/locationnameaction/{Id}", method = RequestMethod.GET)
     public String locationNameAction(@AuthenticationPrincipal Login userLogin, @PathVariable("Id") Long Id, Model model) {
         LocationName locationName = this.locationNameService.getByID(Id);
         model.addAttribute("locationName", locationName);
-        return "/common/locationnameaction";
+        return "common/locationnameaction";
     }
 
     @RequestMapping(value = "/common/locationnameform", method = RequestMethod.POST)

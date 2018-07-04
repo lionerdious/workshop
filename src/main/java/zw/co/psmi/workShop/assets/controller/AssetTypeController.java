@@ -30,14 +30,14 @@ public class AssetTypeController {
      @RequestMapping(value = "/assets/assettypes", method = RequestMethod.GET)
     public String locationName(@AuthenticationPrincipal Login userLogin, Model model) {
         model.addAttribute("assetTypes", this.assetTypeService.findAll());
-        return "/common/locationname";
+        return "common/locationname";
     }
 
     @RequestMapping(value = "/assets/assettypesaction/{Id}", method = RequestMethod.GET)
     public String locationNameAction(@AuthenticationPrincipal Login userLogin, @PathVariable("Id") Long Id, Model model) {
         AssetType assetType = this.assetTypeService.getByID(Id);
         model.addAttribute("assetType", assetType);
-        return "/assets/assettypesaction";
+        return "assets/assettypesaction";
     }
 
     @RequestMapping(value = "/assets/assettypesform", method = RequestMethod.POST)

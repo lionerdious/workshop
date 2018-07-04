@@ -70,7 +70,7 @@ public class SiteController {
         model.addAttribute("pager", pager);
 
         model.addAttribute("sitess", this.siteService.findAll());
-        return "/common/site";
+        return "common/site";
     }
 
     @RequestMapping(value = "/common/siteaction/{Id}", method = RequestMethod.GET)
@@ -79,7 +79,7 @@ public class SiteController {
         model.addAttribute("site", site);
         model.addAttribute("region", Region.values());
         model.addAttribute("lob", LOB.values());
-        return "/common/siteaction";
+        return "common/siteaction";
     }
 
     @RequestMapping(value = "/common/siteform", method = RequestMethod.POST)
